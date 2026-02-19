@@ -132,6 +132,26 @@ function urban_cms_customizer( WP_Customize_Manager $wp_customize ): void {
 
     urban_cms_add_setting( $wp_customize, 'footer_about',       __( 'Footer About Text', 'urban-cms' ),    'textarea', '', 'urban_footer' );
     urban_cms_add_setting( $wp_customize, 'footer_copyright',   __( 'Copyright Text', 'urban-cms' ),       'text',     '', 'urban_footer' );
+
+    // ---- Section: Newsletter ----
+    $wp_customize->add_section( 'urban_newsletter', [
+        'title'  => __( 'Newsletter Signup', 'urban-cms' ),
+        'panel'  => 'urban_district',
+    ] );
+
+    $wp_customize->add_setting( 'newsletter_enabled', [
+        'default'           => true,
+        'sanitize_callback' => 'rest_sanitize_boolean',
+        'transport'         => 'postMessage',
+    ] );
+    $wp_customize->add_control( 'newsletter_enabled', [
+        'label'   => __( 'Show newsletter signup above footer', 'urban-cms' ),
+        'section' => 'urban_newsletter',
+        'type'    => 'checkbox',
+    ] );
+
+    urban_cms_add_setting( $wp_customize, 'newsletter_heading',    __( 'Heading', 'urban-cms' ),     'text',     __( 'Stay Connected', 'urban-cms' ),                                                              'urban_newsletter' );
+    urban_cms_add_setting( $wp_customize, 'newsletter_subheading', __( 'Subheading', 'urban-cms' ),  'textarea', __( 'Get district news, events, and updates delivered to your inbox.', 'urban-cms' ), 'urban_newsletter' );
 }
 
 /**

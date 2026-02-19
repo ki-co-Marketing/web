@@ -1,6 +1,13 @@
 </main><!-- #main -->
 </div><!-- #page -->
 
+<?php
+/* Newsletter section — full-width band above footer */
+if ( get_theme_mod( 'newsletter_enabled', true ) ) :
+    get_template_part( 'template-parts/newsletter', 'signup', [ 'variant' => 'full-width', 'source' => 'footer' ] );
+endif;
+?>
+
 <footer class="site-footer" role="contentinfo">
     <div class="container">
         <div class="footer-grid">

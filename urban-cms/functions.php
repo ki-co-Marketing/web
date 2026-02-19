@@ -23,6 +23,8 @@ require_once URBAN_CMS_DIR . '/inc/customizer.php';
 require_once URBAN_CMS_DIR . '/inc/helpers.php';
 require_once URBAN_CMS_DIR . '/inc/social-icons.php';
 require_once URBAN_CMS_DIR . '/inc/shortcodes.php';
+require_once URBAN_CMS_DIR . '/inc/submission-forms.php';
+require_once URBAN_CMS_DIR . '/inc/newsletter.php';
 
 /* =========================================================
    Theme Setup
@@ -96,6 +98,14 @@ function urban_cms_assets() {
         'urban-cms',
         URBAN_CMS_URI . '/style.css',
         [ 'urban-fonts', 'font-awesome' ],
+        URBAN_CMS_VERSION
+    );
+
+    // Forms, dashboard & newsletter styles (load everywhere — lightweight)
+    wp_enqueue_style(
+        'urban-cms-forms',
+        URBAN_CMS_URI . '/assets/css/forms.css',
+        [ 'urban-cms' ],
         URBAN_CMS_VERSION
     );
 
