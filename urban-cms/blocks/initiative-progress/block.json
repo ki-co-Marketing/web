@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "urban-cms/initiative-progress",
+  "title": "Initiative Progress",
+  "description": "Highlight a single district initiative with its live progress bar and status.",
+  "category": "urban-cms",
+  "icon": "building",
+  "keywords": ["initiative", "project", "progress"],
+  "supports": { "html": false },
+  "attributes": {
+    "postId":          { "type": "number",  "default": 0 },
+    "showProgressBar": { "type": "boolean", "default": true },
+    "showDetails":     { "type": "boolean", "default": true }
+  },
+  "editorScript": "urban-cms-blocks-editor"
+}

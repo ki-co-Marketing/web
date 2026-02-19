@@ -1,0 +1,18 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "urban-cms/events-list",
+  "title": "Events List",
+  "description": "Display upcoming district events in a filterable list view.",
+  "category": "urban-cms",
+  "icon": "calendar-alt",
+  "keywords": ["events", "calendar", "upcoming"],
+  "supports": { "html": false },
+  "attributes": {
+    "count":       { "type": "number",  "default": 4 },
+    "category":    { "type": "string",  "default": "" },
+    "showRsvpBtn": { "type": "boolean", "default": true },
+    "showViewAll": { "type": "boolean", "default": true }
+  },
+  "editorScript": "urban-cms-blocks-editor"
+}

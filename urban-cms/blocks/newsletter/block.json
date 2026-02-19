@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "urban-cms/newsletter",
+  "title": "Newsletter Signup",
+  "description": "Embed a newsletter signup form. Choose between inline, card, or full-width variants.",
+  "category": "urban-cms",
+  "icon": "email",
+  "keywords": ["newsletter", "subscribe", "email"],
+  "supports": { "html": false, "align": ["wide", "full"] },
+  "attributes": {
+    "variant":    { "type": "string", "default": "card" },
+    "list":       { "type": "string", "default": "general" },
+    "source":     { "type": "string", "default": "block" },
+    "heading":    { "type": "string", "default": "" },
+    "subheading": { "type": "string", "default": "" }
+  },
+  "editorScript": "urban-cms-blocks-editor"
+}

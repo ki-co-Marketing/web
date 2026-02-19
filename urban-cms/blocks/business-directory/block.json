@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "urban-cms/business-directory",
+  "title": "Business Directory",
+  "description": "Embed a filterable grid of district businesses.",
+  "category": "urban-cms",
+  "icon": "store",
+  "keywords": ["businesses", "directory", "listings"],
+  "supports": { "html": false, "align": ["wide", "full"] },
+  "attributes": {
+    "count":        { "type": "number",  "default": 6 },
+    "category":     { "type": "string",  "default": "" },
+    "featuredOnly": { "type": "boolean", "default": false },
+    "layout":       { "type": "string",  "default": "grid" },
+    "showViewAll":  { "type": "boolean", "default": true }
+  },
+  "editorScript": "urban-cms-blocks-editor"
+}

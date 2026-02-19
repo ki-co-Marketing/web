@@ -1,0 +1,16 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "urban-cms/team-grid",
+  "title": "Team Grid",
+  "description": "Display team members in a responsive photo grid.",
+  "category": "urban-cms",
+  "icon": "groups",
+  "keywords": ["team", "staff", "people"],
+  "supports": { "html": false },
+  "attributes": {
+    "count":   { "type": "number", "default": -1 },
+    "columns": { "type": "number", "default": 4 }
+  },
+  "editorScript": "urban-cms-blocks-editor"
+}

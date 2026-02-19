@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "urban-cms/district-stats",
+  "title": "District Stats Bar",
+  "description": "Displays the four key district statistics (members, businesses, etc.) from Theme Customizer settings, with optional per-block overrides.",
+  "category": "urban-cms",
+  "icon": "chart-bar",
+  "keywords": ["stats", "numbers", "district", "urban"],
+  "supports": { "html": false, "align": ["wide", "full"] },
+  "attributes": {
+    "useCustom": { "type": "boolean", "default": false },
+    "stat1Number": { "type": "string", "default": "" },
+    "stat1Label":  { "type": "string", "default": "" },
+    "stat2Number": { "type": "string", "default": "" },
+    "stat2Label":  { "type": "string", "default": "" },
+    "stat3Number": { "type": "string", "default": "" },
+    "stat3Label":  { "type": "string", "default": "" },
+    "stat4Number": { "type": "string", "default": "" },
+    "stat4Label":  { "type": "string", "default": "" }
+  },
+  "editorScript": "urban-cms-blocks-editor"
+}

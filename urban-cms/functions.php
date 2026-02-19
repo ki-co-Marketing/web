@@ -25,6 +25,8 @@ require_once URBAN_CMS_DIR . '/inc/social-icons.php';
 require_once URBAN_CMS_DIR . '/inc/shortcodes.php';
 require_once URBAN_CMS_DIR . '/inc/submission-forms.php';
 require_once URBAN_CMS_DIR . '/inc/newsletter.php';
+require_once URBAN_CMS_DIR . '/inc/archive-filters.php';
+require_once URBAN_CMS_DIR . '/inc/blocks.php';
 
 /* =========================================================
    Theme Setup
@@ -150,6 +152,17 @@ function urban_cms_assets() {
         'restUrl'   => esc_url_raw( rest_url( 'urban-cms/v1/' ) ),
         'isRtl'     => is_rtl(),
     ] );
+
+    // Initiative archive filters
+    if ( is_post_type_archive( 'urban_initiative' ) ) {
+        wp_enqueue_script(
+            'urban-initiative-filters',
+            URBAN_CMS_URI . '/assets/js/initiative-filters.js',
+            [ 'urban-cms' ],
+            URBAN_CMS_VERSION,
+            true
+        );
+    }
 
     // Comments script
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "urban-cms/hero-banner",
+  "title": "District Hero Banner",
+  "description": "A full-width hero section with heading, subheading, and two CTA buttons.",
+  "category": "urban-cms",
+  "icon": "align-full-width",
+  "keywords": ["hero", "banner", "header", "cta"],
+  "supports": { "html": false, "align": ["full"] },
+  "attributes": {
+    "eyebrow":    { "type": "string", "default": "" },
+    "heading":    { "type": "string", "default": "Welcome to the District" },
+    "subheading": { "type": "string", "default": "Discover events, businesses, and initiatives shaping our community." },
+    "cta1Text":   { "type": "string", "default": "Explore the District" },
+    "cta1Url":    { "type": "string", "default": "" },
+    "cta2Text":   { "type": "string", "default": "View Events" },
+    "cta2Url":    { "type": "string", "default": "" },
+    "bgColor":    { "type": "string", "default": "#1a3a5c" },
+    "accentColor":{ "type": "string", "default": "#e8a020" },
+    "bgImageUrl": { "type": "string", "default": "" },
+    "minHeight":  { "type": "number", "default": 480 }
+  },
+  "editorScript": "urban-cms-blocks-editor"
+}
