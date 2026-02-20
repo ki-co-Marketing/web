@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         name="Urban CMS"
+         xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd">
+
+    <description>WordPress Coding Standards for the Urban CMS theme.</description>
+
+    <!-- Files to check -->
+    <file>urban-cms</file>
+
+    <!-- Exclude generated/vendor paths -->
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/node_modules/*</exclude-pattern>
+
+    <!-- Show progress and use colors -->
+    <arg value="sp"/>
+    <arg name="colors"/>
+    <arg name="extensions" value="php"/>
+
+    <!-- PHP version compatibility (WP minimum 8.1) -->
+    <config name="testVersion" value="8.1-"/>
+
+    <!-- Text domain for i18n checks -->
+    <config name="text_domain" value="urban-cms"/>
+
+    <!-- WordPress prefixes for global vars/functions -->
+    <config name="prefixes" value="urban_cms,URBAN_CMS"/>
+
+    <!-- Standards -->
+    <rule ref="WordPress">
+        <!-- Allow short array syntax [] — modern WP allows it -->
+        <exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
+
+        <!-- Allow filename flexibility for template files like front-page.php -->
+        <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
+
+        <!-- Allow closing PHP tags in template files -->
+        <exclude name="Squiz.PHP.EmbeddedPhp.NoSemicolonAfterStatement"/>
+
+        <!-- Comment style — cosmetic, not enforced here -->
+        <exclude name="Squiz.Commenting.BlockComment.CloserSameLine"/>
+        <exclude name="Squiz.Commenting.BlockComment.NoNewLine"/>
+        <exclude name="Squiz.Commenting.FunctionComment.WrongStyle"/>
+        <exclude name="Squiz.Commenting.FunctionComment.Missing"/>
+        <exclude name="Squiz.Commenting.FunctionComment.MissingParamTag"/>
+        <exclude name="Squiz.Commenting.FunctionComment.MissingParamComment"/>
+        <exclude name="Squiz.Commenting.FunctionComment.MissingReturn"/>
+        <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
+        <exclude name="Squiz.Commenting.FileComment.Missing"/>
+        <exclude name="Squiz.Commenting.FileComment.MissingPackageTag"/>
+        <exclude name="Squiz.Commenting.FileComment.WrongStyle"/>
+        <exclude name="Squiz.Commenting.ClassComment.Missing"/>
+        <exclude name="Generic.Commenting.DocComment.MissingShort"/>
+
+        <!-- Template variables and WP globals — false positives in theme templates -->
+        <exclude name="WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound"/>
+        <exclude name="WordPress.WP.GlobalVariablesOverride.Prohibited"/>
+
+        <!-- Yoda conditions — style preference, not enforced -->
+        <exclude name="WordPress.PHP.YodaConditions.NotYoda"/>
+
+        <!-- Translators comment — informational, not blocking -->
+        <exclude name="WordPress.WP.I18n.MissingTranslatorsComment"/>
+
+        <!-- Slow DB queries (meta_query / tax_query) — acceptable in theme context -->
+        <exclude name="WordPress.DB.SlowDBQuery.slow_db_query_meta_query"/>
+        <exclude name="WordPress.DB.SlowDBQuery.slow_db_query_tax_query"/>
+        <exclude name="WordPress.DB.SlowDBQuery.slow_db_query_meta_key"/>
+        <exclude name="WordPress.DB.SlowDBQuery.slow_db_query_meta_value"/>
+
+        <!-- Multiple assignment in conditions — flagged on complex WP_Query patterns -->
+        <exclude name="Squiz.PHP.DisallowMultipleAssignments.FoundInControlStructure"/>
+        <exclude name="Generic.CodeAnalysis.AssignmentInCondition.Found"/>
+
+        <!-- Unused parameters: render callbacks receive $attrs/$content/$block -->
+        <exclude name="Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed"/>
+    </rule>
+
+    <!-- PHP compatibility with WP environment -->
+    <rule ref="PHPCompatibilityWP"/>
+
+    <!-- Enforce text domain on all translatable strings -->
+    <rule ref="WordPress.WP.I18n">
+        <properties>
+            <property name="text_domain" type="array">
+                <element value="urban-cms"/>
+            </property>
+        </properties>
+    </rule>
+
+    <!-- Restrict direct DB calls: encourage $wpdb use -->
+    <rule ref="WordPress.DB.DirectDatabaseQuery">
+        <properties>
+            <property name="customCacheGetFunctions" type="array">
+                <element value="wp_cache_get"/>
+            </property>
+            <property name="customCacheSetFunctions" type="array">
+                <element value="wp_cache_set"/>
+            </property>
+            <property name="customCacheDeleteFunctions" type="array">
+                <element value="wp_cache_delete"/>
+            </property>
+        </properties>
+    </rule>
+
+</ruleset>
