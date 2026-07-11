@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+@theme {
+  /* Midnight — page + surface scale */
+  --color-midnight-950: #0b0b1a;
+  --color-midnight-900: #12122b;
+  --color-midnight-800: #1c1c42;
+  --color-midnight-700: #2a2a5e;
+
+  /* Amethyst — primary accent */
+  --color-amethyst-300: #c4b5fd;
+  --color-amethyst-400: #a78bfa;
+  --color-amethyst-500: #8b5cf6;
+  --color-amethyst-600: #7c3aed;
+  --color-amethyst-700: #6a28d9;
+
+  /* Gold — reward, streaks, completion */
+  --color-gold-300: #f2d98d;
+  --color-gold-400: #e4b95b;
+  --color-gold-500: #c99936;
+  --color-gold-600: #a87c25;
+
+  /* Moon — text scale */
+  --color-moon-100: #f4f1fa;
+  --color-moon-300: #c9c3e0;
+  --color-moon-500: #8e86ad;
+
+  /* Feedback */
+  --color-success-400: #34d399;
+  --color-success-600: #0e9f6e;
+  --color-danger-400: #f0526a;
+  --color-danger-600: #c22743;
+
+  --font-display: "Cormorant Garamond Variable", Georgia, serif;
+  --font-sans: "Inter Variable", system-ui, sans-serif;
+
+  --shadow-glow: 0 0 24px 0 rgb(139 92 246 / 0.35);
+  --shadow-glow-gold: 0 0 20px 0 rgb(228 185 91 / 0.3);
+
+  --animate-twinkle: twinkle 4s ease-in-out infinite;
+  --animate-node-pulse: node-pulse 2.4s ease-in-out infinite;
+  --animate-rise-fade: rise-fade 0.25s ease-out both;
+  --animate-shake: shake 0.3s ease-in-out;
+  --animate-pop: pop 0.3s ease-out;
+  --animate-burst: burst 0.9s ease-out both;
+
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 0.2;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  @keyframes node-pulse {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgb(139 92 246 / 0.45);
+    }
+    50% {
+      box-shadow: 0 0 0 12px rgb(139 92 246 / 0);
+    }
+  }
+  @keyframes rise-fade {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes shake {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-6px);
+    }
+    75% {
+      transform: translateX(6px);
+    }
+  }
+  @keyframes pop {
+    0% {
+      transform: scale(1);
+    }
+    40% {
+      transform: scale(1.35);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes burst {
+    0% {
+      opacity: 0;
+      transform: scale(0.2) translateY(0);
+    }
+    30% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.1) translateY(-28px);
+    }
+  }
+}
+
+body {
+  background-color: var(--color-midnight-950);
+  color: var(--color-moon-100);
+  font-family: var(--font-sans);
+}
+
+/* Faint nebula wash behind everything */
+.nebula-bg {
+  background:
+    radial-gradient(
+      60rem 40rem at 15% -10%,
+      rgb(124 58 237 / 0.16),
+      transparent 60%
+    ),
+    radial-gradient(
+      50rem 36rem at 110% 110%,
+      rgb(228 185 91 / 0.07),
+      transparent 60%
+    );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
